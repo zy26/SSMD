@@ -2,21 +2,7 @@
 
 ## Description
 
-Multiple deconvolution methods have been developed for investigating the
-heterogeneous immune and stromal (I/S) cell types in human cancer tissue
-to estimate their relative abundances using transcriptomic data.
-However, there is a lack of a robust method and user-friendly software
-for mouse transcriptomic data deconvolution. Here, we developed a novel
-semi-supervised approach, namely SSMD, by (i) deriving potential I/S
-cell signature genes from a large collection of mouse data sets to form
-a marker labeling matrix; (ii) implementing a rank-1 sub matrix
-identification method to test the presence of I/S cell types and
-identify data set specific I/S cell markers; and (iii) utilizing a
-constrained non-negative matrix factorization (NMF) based framework to
-account for diversity of mouse models. The new method was validated on
-single cell RNA-seq simulated bulk tissue data and independent
-immuno-assay data. The method is applied to mouse prostate cancer data
-sets to infer the level of anti-cancer immune cell populations.
+Deconvolution of mouse transcriptomic data is challenged by the fact that mouse models carry various genetic and physiological perturbations, making it questionable to assume fixed cell types and cell type marker genes for different dataset scenarios. We developed a Semi-Supervised Mouse data Deconvolution (SSMD) method to study the mouse tissue microenvironment (TME). SSMD is featured by (i) a novel non-parametric method to discover data set specific cell type signature genes; (ii) a community detection approach for fixing cell types and their marker genes; (iii) a constrained matrix decomposition method to solve cell type relative proportions that is robust to diverse experimental platforms. In summary, SSMD addressed several key challenges in the deconvolution of mouse tissue data, including: (1) varied cell types and marker genes caused by highly divergent genotypic and phenotypic conditions of mouse experiment, (2) diverse experimental platforms of mouse transcriptomics data, (3) small sample size and limited training data source, and (4) capable to estimate the proportion of 35 cell types in blood, inflammatory, central nervous or hematopoietic systems. In silico and experimental validation of SSMD demonstrated its high sensitivity and accuracy in identifying (sub) cell types and predicting cell proportions comparing to state-of-the-arts methods. A user-friendly R package and a web server of SSMD are released via https://ssmd.ccbb.iupui.edu.
 
 ![](./README.png)
 
