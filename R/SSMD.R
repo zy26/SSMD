@@ -60,24 +60,7 @@ SSMD <- function(data11,tissue) {
   
   
   ############################
-  R2_two_vector <- function(predict, actual){
-    #R2 <- 1 - sum( (actual-predict )^2 ) / sum( (actual-mean(actual) )^2  ) 
-    R2 <- 1 - sum( (actual-predict )^2 ) / sum( actual^2 ) 
-    return(R2)
-  }
   
-  R2_two_mat <- function(aaa, bbb){
-    if(nrow(aaa) != nrow(bbb)) stop("size of aaa and bbb different!")
-    n_gene <- nrow(aaa)
-    vc <- matrix(NA, n_gene, 1)
-    for(i in 1:n_gene){
-      tmp_a <- aaa[i, ]
-      tmp_b <- bbb[i, ]
-      vc[i] <- R2_two_vector(tmp_a, tmp_b)
-    }
-    rownames(vc) <- rownames(aaa)
-    return(vc)
-  }
   
   # caculate the base in selected list
   Compute_Rbase_SVD_addSigMat <- function (bulk_data, tg_R1_lists_selected) 
@@ -205,25 +188,26 @@ SSMD <- function(data11,tissue) {
       thr=0.6
     }else{
       ###gene size must be large enough
-      res <- rm.get.threshold(corr,interactive =F,plot.spacing =F,plot.comp =F,save.fit=F,interval=c(0.4,max(abs(corr[which(corr!=1)]))))
       
+      invisible(capture.output(res <- rm.get.threshold(corr,interactive =F,plot.spacing =F,plot.comp =F,save.fit=F,interval=c(0.4,max(abs(corr[which(corr!=1)]))))))
       #suppressWarnings()
-      dis=res$tested.thresholds[which(res$dist.Expon>res$dist.Wigner & res$tested.thresholds>0.6)][1]
+      invisible(capture.output(dis=res$tested.thresholds[which(res$dist.Expon>res$dist.Wigner & res$tested.thresholds>0.6)][1]))
+      
       if ( is.na(dis) ){
         dis=0
       }
-      p.ks=res$tested.thresholds[which(res$p.ks>0.05)][1]
+      invisible(capture.output(p.ks=res$tested.thresholds[which(res$p.ks>0.05)][1]))
+    
       if ( is.na(p.ks) ){
         p.ks=0
       }
       thr=max(dis,p.ks,0.6)
     }
     ######
-    print('##################')
-    print(thr)
-    print('##################')
-    
-    cleaned.matrix <- rm.denoise.mat(corr, threshold = thr, keep.diag = TRUE)
+    # print('##################')
+    # print(thr)
+    # print('##################')
+    invisible(capture.output(cleaned.matrix <- rm.denoise.mat(corr, threshold = thr, keep.diag = TRUE)))
     clust=hclust(dist(cleaned.matrix))
     
     written_list=rep(0, dim(corr)[1])
@@ -255,7 +239,7 @@ SSMD <- function(data11,tissue) {
             marker_modules_cell_type[[marker_modules_length]]=names(d)
             marker_modules_length=marker_modules_length+1
             keep_k[[k]]=keep_sample
-            print(mean)
+            #print(mean)
           }
         }
       }  
