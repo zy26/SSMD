@@ -20,8 +20,9 @@ estimate.proportion <- function(data, lambda = lambda)
 
 ## Arguments
 
-* `data`        input gene expression matrix. MGI gene symbol should be as their row names
-* `parameter`   threshold of mean correlation to define rank-1 co-expression module
+* `bulk_data`    input bulk tissue gene expression matrix. MGI gene symbol should be as their row names
+* `tissue`   tissue type of gene expression data, which can be Inflammatory, Central Nervous System, Hematopoietic System or Blood
+
 
 ## Value
 
@@ -35,9 +36,9 @@ the following components:
 ## Examples
 
 ```
-#load your own gene expression data
+#load bulk tissue gene expression data
 load('example_bulk.RData')
-SSMD(bulk_data = '',tissue = 'Inflammatory')
+SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
 ```
 
 ## Contact Information
