@@ -8,14 +8,17 @@ Deconvolution of mouse transcriptomic data is challenged by the fact that mouse 
 ## Installation
 
 ```
-install.packages("devtools")
+#install.packages("nnls")
+
+#install.packages("devtools")
+
 devtools::install_github("xiaoyulu95/SSMD")
 ```
 
 ## Usage
 
 ```
-estimate.proportion <- function(data, lambda = lambda)
+estimate.proportion <- SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
 ```
 
 ## Arguments
@@ -29,9 +32,10 @@ estimate.proportion <- function(data, lambda = lambda)
 An object of class is also invisibly returned. This is a list containing
 the following components:
 
-* `Stat_all`      statistics for all rank-1 co-expression module. `CT`: cell type; mean: mean correlation inside the module; `Core_overlap_number`: Overlap number with core marker list; `Core_overlap_rate`: overlap rate with core marker list; `BCV_rank`: bcv rank of the first base
-* `module_keep`   modules with the high overlap number with core marker list for each cell type
-* `proportion`     estimated proportion for each cell type
+* `ProMat`    estimated proportion for each cell type
+* `mk_gene`    gene modules used as markers for each predicted cell type
+* `Escore_vector`    E-Score for each marker genes used in deconvolution
+
 
 ## Examples
 
