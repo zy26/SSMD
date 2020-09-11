@@ -191,12 +191,12 @@ SSMD <- function(data11,tissue) {
       
       invisible(capture.output(res <- rm.get.threshold(corr,interactive =F,plot.spacing =F,plot.comp =F,save.fit=F,interval=c(0.4,max(abs(corr[which(corr!=1)]))))))
       #suppressWarnings()
-      invisible(capture.output(dis=res$tested.thresholds[which(res$dist.Expon>res$dist.Wigner & res$tested.thresholds>0.6)][1]))
+      invisible(capture.output(dis <- res$tested.thresholds[which(res$dist.Expon>res$dist.Wigner & res$tested.thresholds>0.6)][1]))
       
       if ( is.na(dis) ){
         dis=0
       }
-      invisible(capture.output(p.ks=res$tested.thresholds[which(res$p.ks>0.05)][1]))
+      invisible(capture.output(p.ks <- res$tested.thresholds[which(res$p.ks>0.05)][1]))
     
       if ( is.na(p.ks) ){
         p.ks=0
@@ -352,5 +352,5 @@ SSMD <- function(data11,tissue) {
   #E-Score
   e_mat <- SSMD_cal_escore(sig_matrix, Prop, data11)
   #list(predict_p = proportion_matrix,sig_gene_list = module_keep_plain)
-  return(list(SigMat=sig_matrix, ProMat=Prop, mk_gene=module_keep_plain,Escore_vector=e_mat))
+  return(list(ProMat=Prop, mk_gene=module_keep_plain,Escore_vector=e_mat))
 }
