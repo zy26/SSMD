@@ -33,7 +33,9 @@
 }
 
 
-SSMD <- function(data11,tissue) {
+SSMD <- function(bulk_data,tissue) {
+  
+  data11=bulk_data
   
   BCV_ttest2 <- function(data0, rounds = 20, slice0 = 2, maxrank0 = 4, msep_cut = 0.01) {
     x <- data0
