@@ -34,4 +34,3 @@ This package implements methods for estimate cell type proportion in bulk tissue
  load('example_bulk.RData')
  aaa=estimate.proportion(data,lambda = 0.8)
 }
-666
