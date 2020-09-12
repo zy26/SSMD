@@ -24,7 +24,7 @@ estimate.proportion <- SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
 ## Arguments
 
 * `bulk_data`    input bulk tissue gene expression matrix. MGI gene symbol should be as their row names
-* `tissue`   tissue type of gene expression data, which can be `Inflammatory`, `Central Nervous System`, `Hematopoietic System` or `Blood`.
+* `tissue`   tissue type of gene expression data, which can be `"Inflammatory"`, `"Central Nervous System"`, `"Hematopoietic System"` or `"Blood"`.
 
 
 ## Value
