@@ -354,5 +354,5 @@ SSMD <- function(bulk_data,tissue) {
   #E-Score
   e_mat <- SSMD_cal_escore(sig_matrix, Prop, data11)
   #list(predict_p = proportion_matrix,sig_gene_list = module_keep_plain)
-  return(list(ProMat=Prop, mk_gene=module_keep_plain,Escore_vector=e_mat))
+  return(list(Proportion=Prop, marker_gene=module_keep_plain,Escore=e_mat))
 }

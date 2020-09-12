@@ -32,9 +32,9 @@ estimate.proportion <- SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
 An object of class is also invisibly returned. This is a list containing
 the following components:
 
-* `ProMat`    estimated proportion for each cell type
-* `mk_gene`    gene modules used as markers for each predicted cell type
-* `Escore_vector`    E-Score for each marker genes used in deconvolution
+* `Proportion`    estimated proportion for each identified cell type
+* `marker_gene`    gene modules used as markers for each predicted cell type
+* `Escore`    E-Score for each marker genes used in deconvolution
 
 
 ## Examples
