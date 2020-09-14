@@ -52,8 +52,10 @@ SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
 - [Xiaoyu Lu](https://zcslab.github.io/people/xiaoyu/)
 (lu14@iu.edu)
 
-Ph.D. candidate, Indiana University School of Medicine
+Ph.D candidate at [Biomedical Data Research Lab (BDRL)](https://zcslab.github.io/) , Indiana University School of Medicine
 
 
-## Reference
+## Citations
+If you find the code helpful in your resarch or work, please cite our paper.
+
 Lu, X. Tu, S. Chang, W. Wan, C. Wang, J. Ramdas, B. Kapur, R. Lu, X. Cao, S. Zhang, C. 2020. SSMD: A semi-supervised approach for a robust cell type identification and deconvolution of mouse transcriptomics data
