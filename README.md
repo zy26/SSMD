@@ -40,8 +40,9 @@ the following elements:
 ## Examples
 
 ```
-#load bulk tissue gene expression data 
-# Example bulk tissue data can be downloaded: https://github.com/xiaoyulu95/SSMD/blob/master/data/example_bulk.RData
+# load bulk tissue gene expression data 
+# Example bulk tissue data can be downloaded: 
+# https://github.com/xiaoyulu95/SSMD/blob/master/data/example_bulk.RData
 
 load('example_bulk.RData')
 
