@@ -50,7 +50,7 @@ load('example_bulk.RData')
 
 Bulk_data is input data matrix each row is a gene and each column is a sample.
 
-<div align=center> <img src="https://github.com/xiaoyulu95/SSMD/blob/master/fig/example_data.png" width="700"  height="170"> </div>
+<div align=center> <img src="https://github.com/xiaoyulu95/SSMD/blob/master/fig/example_data.png" width="600"  height="170"> </div>
 
 ```
 Prediction=SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
