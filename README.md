@@ -34,7 +34,7 @@ the following elements:
 
 * `Proportion`    Estimated proportion for each identified cell type
 * `marker_gene`    Gene modules used as markers for each predicted cell type
-* `Escore`    Explanation Score for each marker genes used in deconvolution
+* `Escore`    Explanation Score for each marker gene
 
 
 ## Examples
@@ -46,12 +46,17 @@ the following elements:
 
 load('example_bulk.RData')
 
-SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
 ```
 
 Bulk_data is input data matrix each row is a gene and each column is a sample.
 
-<div align=center> <img src="https://github.com/xiaoyulu95/SSMD/blob/master/fig/example_data.png" width="700"  height="150"> </div>
+<div align=center> <img src="https://github.com/xiaoyulu95/SSMD/blob/master/fig/example_data.png" width="700"  height="170"> </div>
+
+```
+Prediction=SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
+```
+
+**`Prediction$Proportion`** is a data frame which contians predicted cell types and relative proportion in each samples. **`marker_gene`** is a list of gene coexpression modules which are used as marker to predict corresponding cell proportions. **`Escore`** is Explanation Score for each makrer gene.
 
 
 ## Contact Information
