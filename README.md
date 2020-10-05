@@ -57,7 +57,7 @@ Bulk_data is input data matrix each row is a gene and each column is a sample.
 Prediction=SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
 ```
 
-**`Prediction$Proportion`** is a data frame which contians predicted cell types and relative proportion in each samples. **`Prediction$marker_gene`** is a list of gene coexpression modules which are used as marker to predict corresponding cell proportions. **`Prediction$Escore`** is Explanation Score for each makrer gene. **`Prediction$potential_modules`** are rank-1 gene modules which may represent a distinct or rare cell type and not included in SSMD prediction. For more details, please see our [Tutorial](https://xiaoyulu95.github.io/SSMD/index.html/)
+**`Prediction$Proportion`** is a data frame which contians predicted cell types and relative proportion in each samples. **`Prediction$marker_gene`** is a list of gene coexpression modules which are used as marker to predict corresponding cell proportions. **`Prediction$Escore`** is Explanation Score for each makrer gene. **`Prediction$potential_modules`** are rank-1 gene modules which may represent a distinct or rare cell type and not included in SSMD prediction. For more details, please see our [Tutorial](https://xiaoyulu95.github.io/SSMD/index.html)
 
 
 ## Contact Information
