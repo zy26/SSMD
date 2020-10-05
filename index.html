@@ -12,7 +12,7 @@
 
 <meta name="author" content="Xiaoyu Lu" />
 
-<meta name="date" content="2020-10-02" />
+<meta name="date" content="2020-10-04" />
 
 <title>Semi-Supervised Mouse data Deconvolution</title>
 
@@ -302,7 +302,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Semi-Supervised Mouse data Deconvolution</h1>
 <h4 class="author">Xiaoyu Lu</h4>
-<h4 class="date">2020-10-02</h4>
+<h4 class="date">2020-10-04</h4>
 
 
 
@@ -358,8 +358,7 @@ Analysis pipeline of core marker training and deconvolution procedure
 <p>This loads <em>example_bulk</em> object which contains the input bulk tissue RNA-seq data matrix <span class="math inline">\(X\)</span> which has 24672 genes and 100 samples. We utilize SSMD to identify cell types and their corresponding proportion in each sample. Predefined tissue environment information are required to be clarified when we run SSMD. There are four options: “Inflammatory”, “Central Nervous System”, “Hematopoietic System” or “Blood”. We choose “Inflammatory” for <em>example_bulk</em> because it is from mouse cancer tissue.</p>
 <p><br></p>
 <p>Main function of SSMD package can be used as below example:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">load</span>(<span class="st">'SSMD_res.RData'</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#Prediction=SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">Prediction=<span class="kw">SSMD</span>(<span class="dt">bulk_data=</span>example_bulk,<span class="dt">tissue =</span> <span class="st">'Inflammatory'</span>)</a></code></pre></div>
 </div>
 <div id="interpretation-of-ssmd-results" class="section level1">
 <h1>Interpretation of SSMD results</h1>

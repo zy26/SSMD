@@ -57,7 +57,7 @@ Bulk_data is input data matrix each row is a gene and each column is a sample.
 Prediction=SSMD(bulk_data=example_bulk,tissue = 'Inflammatory')
 ```
 
-**`Prediction$Proportion`** is a data frame which contians predicted cell types and relative proportion in each samples. **`Prediction$marker_gene`** is a list of gene coexpression modules which are used as marker to predict corresponding cell proportions. **`Prediction$Escore`** is Explanation Score for each makrer gene. **`Prediction$potential_modules`** are rank-1 gene modules which may represent a distinct or rare cell type and not included in SSMD prediction.
+**`Prediction$Proportion`** is a data frame which contians predicted cell types and relative proportion in each samples. **`Prediction$marker_gene`** is a list of gene coexpression modules which are used as marker to predict corresponding cell proportions. **`Prediction$Escore`** is Explanation Score for each makrer gene. **`Prediction$potential_modules`** are rank-1 gene modules which may represent a distinct or rare cell type and not included in SSMD prediction. For more details, please see our [Tutorial](https://xiaoyulu95.github.io/SSMD/index.html/)
 
 
 ## Contact Information
@@ -69,6 +69,6 @@ Ph.D candidate at [Biomedical Data Research Lab (BDRL)](https://zcslab.github.io
 
 
 ## Citations
-If you find the code helpful in your resarch or work, please cite our paper:
+If you find the code helpful in your resarch or work, please cite our [SSMD Paper](https://www.biorxiv.org/content/10.1101/2020.09.22.309278v1.abstract/):
 
 Lu, X. Tu, S. Chang, W. Wan, C. Wang, J. Ramdas, B. Kapur, R. Lu, X. Cao, S. Zhang, C. 2020. SSMD: A semi-supervised approach for a robust cell type identification and deconvolution of mouse transcriptomics data
