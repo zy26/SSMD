@@ -69,6 +69,6 @@ Ph.D candidate at [Biomedical Data Research Lab (BDRL)](https://zcslab.github.io
 
 
 ## Citations
-If you find the code helpful in your resarch or work, please cite our [SSMD Paper](https://www.biorxiv.org/content/10.1101/2020.09.22.309278v1.abstract/):
+If you find the code helpful in your resarch or work, please cite our [SSMD Paper](https://academic.oup.com/bib/advance-article/doi/10.1093/bib/bbaa307/5998844?guestAccessKey=944ba892-d2ac-4e71-942f-6f05e4c2768f/):
 
-Lu, X. Tu, S. Chang, W. Wan, C. Wang, J. Ramdas, B. Kapur, R. Lu, X. Cao, S. Zhang, C. 2020. SSMD: A semi-supervised approach for a robust cell type identification and deconvolution of mouse transcriptomics data
+Xiaoyu Lu, Szu-Wei Tu, Wennan Chang, Changlin Wan, Jiashi Wang, Yong Zang, Baskar Ramdas, Reuben Kapur, Xiongbin Lu, Sha Cao, Chi Zhang, SSMD: a semi-supervised approach for a robust cell type identification and deconvolution of mouse transcriptomics data, Briefings in Bioinformatics, 2020;, bbaa307, https://doi.org/10.1093/bib/bbaa307
