@@ -33,7 +33,9 @@
 }
 
 
-SSMD <- function(data11,tissue) {
+SSMD <- function(bulk_data,tissue) {
+  
+  data11=bulk_data
   
   BCV_ttest2 <- function(data0, rounds = 20, slice0 = 2, maxrank0 = 4, msep_cut = 0.01) {
     x <- data0
@@ -60,6 +62,7 @@ SSMD <- function(data11,tissue) {
   
   
   ############################
+  
   
   # caculate the base in selected list
   Compute_Rbase_SVD_addSigMat <- function (bulk_data, tg_R1_lists_selected) 
@@ -187,25 +190,26 @@ SSMD <- function(data11,tissue) {
       thr=0.6
     }else{
       ###gene size must be large enough
-      res <- rm.get.threshold(corr,interactive =F,plot.spacing =F,plot.comp =F,save.fit=F,interval=c(0.4,max(abs(corr[which(corr!=1)]))))
       
+      invisible(capture.output(res <- rm.get.threshold(corr,interactive =F,plot.spacing =F,plot.comp =F,save.fit=F,interval=c(0.4,max(abs(corr[which(corr!=1)]))))))
       #suppressWarnings()
-      dis=res$tested.thresholds[which(res$dist.Expon>res$dist.Wigner & res$tested.thresholds>0.6)][1]
+      invisible(capture.output(dis <- res$tested.thresholds[which(res$dist.Expon>res$dist.Wigner & res$tested.thresholds>0.6)][1]))
+      
       if ( is.na(dis) ){
         dis=0
       }
-      p.ks=res$tested.thresholds[which(res$p.ks>0.05)][1]
+      invisible(capture.output(p.ks <- res$tested.thresholds[which(res$p.ks>0.05)][1]))
+    
       if ( is.na(p.ks) ){
         p.ks=0
       }
       thr=max(dis,p.ks,0.6)
     }
     ######
-    print('##################')
-    print(thr)
-    print('##################')
-    
-    cleaned.matrix <- rm.denoise.mat(corr, threshold = thr, keep.diag = TRUE)
+    # print('##################')
+    # print(thr)
+    # print('##################')
+    invisible(capture.output(cleaned.matrix <- rm.denoise.mat(corr, threshold = thr, keep.diag = TRUE)))
     clust=hclust(dist(cleaned.matrix))
     
     written_list=rep(0, dim(corr)[1])
@@ -237,7 +241,7 @@ SSMD <- function(data11,tissue) {
             marker_modules_cell_type[[marker_modules_length]]=names(d)
             marker_modules_length=marker_modules_length+1
             keep_k[[k]]=keep_sample
-            print(mean)
+            #print(mean)
           }
         }
       }  
@@ -338,7 +342,55 @@ SSMD <- function(data11,tissue) {
   Prop <- combine_uv[[1]]
   sig_matrix <- combine_uv[[2]]
   
+  ####################################
+  #add function: print out modules
+  left_genes=setdiff(unlist(intersect_marker1_choose),unlist(module_keep_plain))
+  data_c<-data11[intersect(rownames(data11),left_genes),]
   
+  corr=cor(t(data_c))
+  corr[sapply(corr, is.na)] = 0
+  clust=hclust(dist(corr))
+  
+  written_list=rep(0, dim(corr)[1])
+  names(written_list)=row.names(corr)
+  n=1
+  cut_value=2
+  t=cutree(clust, k = cut_value)
+  keep_k=vector("list",cut_value)
+  marker_modules_non=vector("list")
+  marker_modules_non_length=1
+  
+  while(cut_value<length(clust$order))
+  {
+    t=cutree(clust, k = cut_value)
+    for (k in 1:cut_value) {
+      d=t[which(t==k)]
+      mean=mean(abs(corr[names(d),names(d)]))
+      #print(mean)
+      
+      if ( mean>=0.8 & length(d) >= 10 ){
+        if (sum(written_list[names(d)])==0){
+          keep_sample=names(d)
+          written_list[keep_sample]=n
+          n=n+1
+          # print(d)
+          # print(mean)
+          keep_sample=names(d)
+          marker_modules_non[[marker_modules_non_length]]=names(d)
+          marker_modules_non_length=marker_modules_non_length+1
+          keep_k[[k]]=keep_sample
+          #print(mean)
+        }
+      }
+    }  
+    
+    #t=cutree(clust, k = cut_value)
+    cut_value=cut_value+1
+  }
+  
+  keep_k[sapply(keep_k, is.null)] = NULL
+  
+  ####################################
 
   #list(Stat_all = Stat_all, module_keep = module_keep, proportion = proportion)
   # proportion_matrix=proportion[[1]]
@@ -350,5 +402,5 @@ SSMD <- function(data11,tissue) {
   #E-Score
   e_mat <- SSMD_cal_escore(sig_matrix, Prop, data11)
   #list(predict_p = proportion_matrix,sig_gene_list = module_keep_plain)
-  return(list(SigMat=sig_matrix, ProMat=Prop, mk_gene=module_keep_plain,Escore_vector=e_mat))
+  return(list(Proportion=Prop, marker_gene=module_keep_plain,Escore=e_mat,potential_modules=keep_k))
 }

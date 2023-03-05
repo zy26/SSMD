@@ -1,5 +1,24 @@
 #epic_LM <- cal_Zscore_small(EPIC_info_list$refProfiles[EPIC_info_list$sigGenes,])
 
+R2_two_vector <- function(predict, actual){
+  #R2 <- 1 - sum( (actual-predict )^2 ) / sum( (actual-mean(actual) )^2  ) 
+  R2 <- 1 - sum( (actual-predict )^2 ) / sum( actual^2 ) 
+  return(R2)
+}
+
+R2_two_mat <- function(aaa, bbb){
+  if(nrow(aaa) != nrow(bbb)) stop("size of aaa and bbb different!")
+  n_gene <- nrow(aaa)
+  vc <- matrix(NA, n_gene, 1)
+  for(i in 1:n_gene){
+    tmp_a <- aaa[i, ]
+    tmp_b <- bbb[i, ]
+    vc[i] <- R2_two_vector(tmp_a, tmp_b)
+  }
+  rownames(vc) <- rownames(aaa)
+  return(vc)
+}
+
 cal_Zscore_small <- function(aaa)
 {
   mmm <- matrix(0, nrow(aaa), ncol(aaa))
